@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import UserRoutes from './routes/userRoutes.js'
+import PetRoutes from './routes/PetRoutes.js'
 
 const port = 5000
 
@@ -10,6 +11,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:5000' }))
 app.use(express.static('public'))
 
 app.use('/users', UserRoutes)
+app.use('/pets', PetRoutes)
 
 app.listen(port, () => {
     console.log('listening on port ' + port + ' http://localhost:5000')
