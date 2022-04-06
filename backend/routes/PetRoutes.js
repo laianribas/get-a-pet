@@ -11,5 +11,6 @@ PetRoutes.post(
     imageUpload.array('images'),
     PetController.register
 )
+PetRoutes.get('/', PetController.getAll)
 
 export default PetRoutes
