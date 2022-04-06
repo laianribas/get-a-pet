@@ -5,6 +5,7 @@ import Pet from '../models/Pet.js'
 export default class PetController {
     static async register(req, res) {
         const { name, age, weight, color } = req.body
+        const images = req.files
         const avaliable = true
 
         //upload images
@@ -21,6 +22,10 @@ export default class PetController {
         }
         if (!color) {
             return res.status(422).json({ message: 'A cor é obrigatória' })
+        }
+
+        if (images.length === 0) {
+            return res.status(422).json({ message: 'A imagem é obrigatória' })
         }
 
         //get pet owner
@@ -43,6 +48,10 @@ export default class PetController {
                 image: user.image,
                 phone: user.phone
             }
+        })
+
+        images.map((image) => {
+            pet.images.push(image.filename)
         })
 
         try {
