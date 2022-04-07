@@ -12,5 +12,7 @@ PetRoutes.post(
     PetController.register
 )
 PetRoutes.get('/', PetController.getAll)
+PetRoutes.get('/mypets', verifyToken, PetController.getAllUserPets)
+PetRoutes.get('/myadoptions', verifyToken, PetController.myAdoptions)
 
 export default PetRoutes
