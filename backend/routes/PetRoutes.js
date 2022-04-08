@@ -16,5 +16,11 @@ PetRoutes.get('/mypets', verifyToken, PetController.getAllUserPets)
 PetRoutes.get('/myadoptions', verifyToken, PetController.myAdoptions)
 PetRoutes.get('/:id', PetController.getPetById)
 PetRoutes.delete('/:id', verifyToken, PetController.removePetById)
+PetRoutes.patch(
+    '/:id',
+    verifyToken,
+    imageUpload.array('images'),
+    PetController.updatePet
+)
 
 export default PetRoutes
