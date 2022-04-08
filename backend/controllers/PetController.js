@@ -96,4 +96,28 @@ export default class PetController {
         }
         return res.status(200).json({ pet })
     }
+    static async removePetById(req, res) {
+        const { id } = req.params
+        if (!Schema.Types.ObjectId.isValid(id)) {
+            return res.status(422).json({ message: 'ID inválido!' })
+        }
+        const pet = await Pet.findOne({ _id: id })
+
+        if (!pet) {
+            return res.status(404).json({ message: 'Não encontrado!' })
+        }
+
+        const token = getToken(req)
+        const user = await getUserByToken(token)
+
+        if (pet.user._id.toString() !== user._id.toString()) {
+            return res.status(422).json({
+                message: 'Houve um problema ao processar sua solicitação, tente novamente mais tarde.'
+            })
+        }
+
+        await Pet.findByIdAndDelete(id)
+
+        return res.status(200).json({ message: 'Pet removido com sucesso!' })
+    }
 }

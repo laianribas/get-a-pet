@@ -15,5 +15,6 @@ PetRoutes.get('/', PetController.getAll)
 PetRoutes.get('/mypets', verifyToken, PetController.getAllUserPets)
 PetRoutes.get('/myadoptions', verifyToken, PetController.myAdoptions)
 PetRoutes.get('/:id', PetController.getPetById)
+PetRoutes.delete('/:id', verifyToken, PetController.removePetById)
 
 export default PetRoutes
