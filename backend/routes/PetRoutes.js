@@ -22,5 +22,6 @@ PetRoutes.patch(
     imageUpload.array('images'),
     PetController.updatePet
 )
+PetRoutes.patch('/schedule/:id', verifyToken, PetController.schedule)
 
 export default PetRoutes
