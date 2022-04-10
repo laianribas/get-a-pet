@@ -23,5 +23,6 @@ PetRoutes.patch(
     PetController.updatePet
 )
 PetRoutes.patch('/schedule/:id', verifyToken, PetController.schedule)
+PetRoutes.patch('/conclude/:id', verifyToken, PetController.concludeAdoption)
 
 export default PetRoutes

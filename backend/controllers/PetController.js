@@ -221,4 +221,31 @@ export default class PetController {
             message: `A visita foi agendada com sucesso. Entre em contato com ${pet.user.name} pelo telefone ${pet.user.phone}`
         })
     }
+
+    static async concludeAdoption(req, res) {
+        const { id } = req.params
+
+        //check if pet already exists
+        const pet = await Pet.findOne({ _id: id })
+
+        if (!pet) {
+            return res.status(404).json({ message: 'Não encontrado!' })
+        }
+        const token = getToken(req)
+        const user = await getUserByToken(token)
+
+        if (pet.user._id.toString() !== user._id.toString()) {
+            return res.status(422).json({
+                message: 'Houve um problema ao processar sua solicitação, tente novamente mais tarde.'
+            })
+        }
+
+        pet.avaliable = false
+
+        await Pet.findByIdAndUpdate(id, pet)
+
+        res.status(200).json({
+            message: 'Parabéns, o processo de adoção foi concluído!'
+        })
+    }
 }
