@@ -18,7 +18,7 @@ const Input = ({
         name={name || ''}
         placeholder={placeholder || ''}
         onChange={handleOnChange || ''}
-        value={value || ''}
+        value={value}
         {...(multiple ? { multiple } : '')}
       />
     </div>
