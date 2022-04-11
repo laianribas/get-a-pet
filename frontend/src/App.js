@@ -1,9 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate
-} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Container from './components/layout/Container'
 import Footer from './components/layout/Footer'
 import Navbar from './components/layout/Navbar'
 import Login from './components/pages/auth/Login'
@@ -14,15 +10,13 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        {/* <Route path="/" element="{<Home />}" />
-                                <Route path="/users" element="{<Users />}" />
-                                <Route path="/allusers" element={<Navigate to="/users" />} />
-                                <Route path="/contact" element="{<Contact />}" /> */}
-        <Route path="/" element={<Home />} />{' '}
-        <Route path="/login" element={<Login />} />{' '}
-        <Route path="/register" element={<Register />} />{' '}
-      </Routes>{' '}
+      <Container>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Container>
       <Footer />
     </Router>
   )
