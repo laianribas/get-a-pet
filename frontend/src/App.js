@@ -5,19 +5,22 @@ import Navbar from './components/layout/Navbar'
 import Login from './components/pages/auth/Login'
 import Register from './components/pages/auth/Register'
 import Home from './components/pages/Home'
+import { UserProvider } from './context/UserContext'
 
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </Container>
-      <Footer />
+      <UserProvider>
+        <Navbar />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </Container>
+        <Footer />
+      </UserProvider>
     </Router>
   )
 }
