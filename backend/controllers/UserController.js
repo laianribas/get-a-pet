@@ -66,12 +66,12 @@ export default class UserController {
     static async login(req, res) {
         const { email, password } = req.body
 
-        if (!email) {
+        if (!email || email === '') {
             res
                 .status(400)
                 .json({ message: 'Por favor, insira um endereço de e-mail!' })
         }
-        if (!password) {
+        if (!password || password === '') {
             res.status(400).json({ message: 'Por favor, insira a senha!' })
         }
 
