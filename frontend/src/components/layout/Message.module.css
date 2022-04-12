@@ -5,6 +5,9 @@
     margin: 1.2em auto 0;
     text-align: center;
     border-radius: 5px;
+    display: block;
+    opacity: 0;
+    animation: revealText .5s forwards;
 }
 
 .success {
@@ -17,4 +20,14 @@
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6bb;
+}
+
+@keyframes revealText {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
