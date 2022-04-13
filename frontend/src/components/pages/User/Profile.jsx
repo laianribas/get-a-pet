@@ -52,6 +52,8 @@ const Profile = () => {
         return err.response.data
       })
 
+    console.log(data)
+
     setFlashMessage(data.message, msgType)
   }
   return (
@@ -76,20 +78,20 @@ const Profile = () => {
           value={user.email || ''}
         />
         <Input
-          text="Nome"
-          type="text"
-          name="name"
-          placeholder="Digite o seu nome"
-          handleOnChange={handleChange}
-          value={user.name || ''}
-        />
-        <Input
           text="Telefone"
           type="text"
           name="phone"
           placeholder="Digite o seu telefone"
           handleOnChange={handleChange}
           value={user.phone || ''}
+        />
+        <Input
+          text="Nome"
+          type="text"
+          name="name"
+          placeholder="Digite o seu nome"
+          handleOnChange={handleChange}
+          value={user.name || ''}
         />
         <Input
           text="Senha"
