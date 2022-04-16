@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import RoundedImage from '../../../components/layout/RoundedImage'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 import api from '../../../utils/api'
-import RoundedImage from '../../../components/layout/RoundedImage'
 import styles from './Dashboard.module.css'
 
 const MyPets = () => {
@@ -24,14 +24,14 @@ const MyPets = () => {
 
   return (
     <section>
-      <div>
+      <div className={styles.petlist_header}>
         <h1>MyPets</h1>
         <Link to="/pet/add">Cadastrar Pet</Link>
       </div>
-      <div>
+      <div className={styles.petlist_container}>
         {pets.length > 0 &&
           pets.map((pet) => (
-            <div key={pet._id}>
+            <div className={styles.petlist_row} key={pet._id}>
               <RoundedImage
                 src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`}
                 alt={pet.name}
@@ -41,7 +41,11 @@ const MyPets = () => {
               <div className={styles.actions}></div>
               {pet.avaliable ? (
                 <>
-                  {pet.adopter && <button>Concluir Adoção</button>}
+                  {pet.adopter && (
+                    <button className={styles.conclude_btn}>
+                      Concluir Adoção
+                    </button>
+                  )}
                   <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
                   <button>Excluir</button>
                 </>

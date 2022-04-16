@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import useFlashMessage from '../../../hooks/useFlashMessage'
 import api from '../../../utils/api'
-import styles from './Profile.module.css'
 import formStyles from '../../form/Form.module.css'
 import Input from '../../form/Input'
-import useFlashMessage from '../../../hooks/useFlashMessage'
 import RoundedImage from '../../layout/RoundedImage'
+import styles from './Profile.module.css'
 
 const Profile = () => {
   const [user, setUser] = useState({})

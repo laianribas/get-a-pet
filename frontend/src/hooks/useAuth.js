@@ -1,7 +1,6 @@
-import api from '../utils/api'
-
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../utils/api'
 import useFlashMessage from './useFlashMessage'
 
 export default function useAuth() {

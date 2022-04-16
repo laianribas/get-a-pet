@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react'
-import Input from '../../form/Input'
 import { Link } from 'react-router-dom'
-
-import styles from '../../form/Form.module.css'
-
 import { Context } from '../../../context/UserContext'
+import styles from '../../form/Form.module.css'
+import Input from '../../form/Input'
 
 const Register = () => {
   const [user, setUser] = useState({})

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import bus from '../../utils/bus'
 import styles from './Message.module.css'
 
