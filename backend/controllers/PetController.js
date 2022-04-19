@@ -181,27 +181,25 @@ export default class PetController {
         //check if pet already exists
         const pet = await Pet.findOne({ _id: id })
 
-        if (!pet) {
-            return res.status(404).json({ message: 'Não encontrado!' })
-        }
-
         //check if user registered the pet
         const token = getToken(req)
         const user = await getUserByToken(token)
 
         if (pet.user._id.equals(user._id)) {
-            return res.status(422).json({
+            res.status(422).json({
                 message: 'Você não pode agendar uma visita para o próprio pet!'
             })
+            return
         }
 
         //check if user has already scheduled a visit
 
         if (pet.adopter) {
-            if (pet.user._id.equals(user._id)) {
-                return res.status(422).json({
+            if (pet.adopter._id.equals(user._id)) {
+                res.status(422).json({
                     message: 'Você já agendou uma visita para este pet!'
                 })
+                return
             }
         }
 
@@ -213,7 +211,7 @@ export default class PetController {
             image: user.image
         }
 
-        await Pet.findOneAndUpdate(id, pet)
+        await Pet.findByIdAndUpdate(pet._id, pet)
 
         res.status(200).json({
             message: `A visita foi agendada com sucesso. Entre em contato com ${pet.user.name} pelo telefone ${pet.user.phone}`
