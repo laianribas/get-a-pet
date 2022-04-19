@@ -30,13 +30,11 @@ const PetDetails = () => {
         }
       )
       .then((response) => {
-        console.log(response.data)
         return response.data
       })
-      .catch((err) => {
-        console.log(err)
+      .catch((error) => {
         msgType = 'error'
-        return err.response.data
+        return error.response.data
       })
 
     setFlashMessage(data.message, msgType)
