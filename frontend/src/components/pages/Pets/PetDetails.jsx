@@ -20,11 +20,15 @@ const PetDetails = () => {
     let msgType = 'success'
 
     const data = await api
-      .patch(`pets/schedule/${pet._id}`, {
-        headers: {
-          Authorization: `Bearer` + JSON.parse(token)
+      .patch(
+        `/pets/schedule/${pet._id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(token)}`
+          }
         }
-      })
+      )
       .then((response) => {
         console.log(response.data)
         return response.data
